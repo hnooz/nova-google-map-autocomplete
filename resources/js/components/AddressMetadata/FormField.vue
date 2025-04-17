@@ -33,7 +33,7 @@ export default {
         });
 
         if (this.field.asJson) {
-            Nova.$on('address-metadata-update', locationObject => {
+            Nova.$on('address-metadata-update', (locationObject) => {
                 this.value = JSON.stringify(locationObject);
             });
         } else if (this.field.addressValue.indexOf('{{') >= 0) {
@@ -44,15 +44,12 @@ export default {
             do {
                 match = bracketRegex.exec(this.field.addressValue);
                 if (match !== null) {
-                    let addressValue = match[0]
-                        .replace('{{', '')
-                        .replace('}}', '')
-                        .trim();
+                    let addressValue = match[0].replace('{{', '').replace('}}', '').trim();
                     addressParts.push(addressValue);
                 }
             } while (match !== null);
 
-            Nova.$on('address-metadata-update', locationObject => {
+            Nova.$on('address-metadata-update', (locationObject) => {
                 if (this.checkIfFlexibleField(locationObject.attribute)) {
                     return;
                 }
@@ -72,7 +69,7 @@ export default {
                 this.value = addressValue;
             });
         } else {
-            Nova.$on('address-metadata-update', locationObject => {
+            Nova.$on('address-metadata-update', (locationObject) => {
                 if (this.checkIfFlexibleField(locationObject.attribute)) {
                     return;
                 }

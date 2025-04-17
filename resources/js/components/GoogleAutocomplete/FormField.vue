@@ -38,7 +38,7 @@ export default {
     components: { VueGoogleAutocomplete },
     mixins: [FormField, HandlesValidationErrors],
     props: ['resourceName', 'resourceId', 'field'],
-    data: function() {
+    data: function () {
         return {
             search: '',
             value: '',
@@ -60,32 +60,24 @@ export default {
             Nova.$emit('address-metadata-clear');
         },
         getAddressData(addressData, placeResultData) {
-            // Save current data address as a string
             this.handleChange(placeResultData.formatted_address);
-
             this.$refs.searchField.$refs.autocomplete.value = '';
 
             const retrievedAddress = {};
 
-            // Emmit events to by catch up for the other AddressMetadata fields
-            this.field.addressObject.forEach(element => {
+            this.field.addressObject.forEach((element) => {
                 if (element.indexOf('.') < 0) {
-                    if (addressData.hasOwnProperty(element)) {
+                    if (Object.prototype.hasOwnProperty.call(addressData, element)) {
                         retrievedAddress[element] = addressData[element];
                     }
-                    if (placeResultData.hasOwnProperty(element)) {
+                    if (Object.prototype.hasOwnProperty.call(placeResultData, element)) {
                         retrievedAddress[element] = placeResultData[element];
                     }
                 } else {
-                    // Separates the type
-                    let value = element.split('.')[0];
-                    let type = element.split('.')[1]; // long_name or short_name
-
-                    for (let i = 0; i < placeResultData.address_components.length; i++) {
-                        let target = placeResultData.address_components[i];
-
-                        if (target.types.includes(value)) {
-                            retrievedAddress[value] = target[type];
+                    const [value, type] = element.split('.');
+                    for (const component of placeResultData.address_components) {
+                        if (component.types.includes(value)) {
+                            retrievedAddress[value] = component[type];
                         }
                     }
                 }
@@ -96,6 +88,7 @@ export default {
                 ...retrievedAddress,
             });
         },
+
         setInitialValue() {
             this.value = this.field.value || '';
         },

@@ -6,7 +6,7 @@ import MetaDataIndexField from './components/AddressMetadata/IndexField';
 import MetaDataDetailField from './components/AddressMetadata/DetailField';
 import MetaDataFormField from './components/AddressMetadata/FormField';
 
-Nova.booting(app => {
+Nova.booting((app) => {
     app.component('index-google-autocomplete', IndexField);
     app.component('detail-google-autocomplete', DetailField);
     app.component('form-google-autocomplete', FormField);
