@@ -6,6 +6,10 @@ jobs:
   styling:
     runs-on: ubuntu-latest
 
+    env:
+      NOVA_USERNAME: ${{ secrets.NOVA_USERNAME }}
+      NOVA_PASSWORD: ${{ secrets.NOVA_PASSWORD }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -21,6 +25,9 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Authenticate with Nova
+        run: composer config http-basic.nova.laravel.com $NOVA_USERNAME $NOVA_PASSWORD
+
       - name: Install Composer dependencies
         run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
 
@@ -28,7 +35,7 @@ jobs:
         run: ./vendor/bin/pint
 
       - name: Run Rector
-        run: ./vendor/bin/rector process --autoload-file=vendor/autoload.php
+        run: ./vendor/bin/rector process
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
