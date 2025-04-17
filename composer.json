@@ -1,5 +1,5 @@
 {
-    "name": "hnooz/nova-google-autocomplete",
+    "name": "hnooz/nova-google-map-autocomplete",
     "description": "A Laravel Nova Google autocomplete field.",
     "keywords": [
         "hnooz",
@@ -9,7 +9,7 @@
         "autocomplete",
         "address"
     ],
-    "homepage": "https://github.com/hnooz/nova-google-autocomplete",
+    "homepage": "https://github.com/hnooz/nova-google-map-autocomplete",
     "license": "MIT",
     "authors": [
         {
