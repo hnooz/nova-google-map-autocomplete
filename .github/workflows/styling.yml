@@ -1,0 +1,36 @@
+name: Check & fix styling
+
+on: [ push ]
+
+jobs:
+  styling:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Install packages
+        run: npm ci
+
+      - name: Prettier
+        run: npm run format
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Install Composer dependencies
+        run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+
+      - name: Run Laravel Pint
+        run: ./vendor/bin/pint
+
+      - name: Run Rector
+        run: ./vendor/bin/rector process --autoload-file=vendor/autoload.php
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Fix styling

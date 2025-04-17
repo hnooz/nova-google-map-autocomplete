@@ -1,0 +1,74 @@
+{
+    "name": "hnooz/nova-google-autocomplete",
+    "description": "A Laravel Nova Google autocomplete field.",
+    "keywords": [
+        "hnooz",
+        "laravel",
+        "nova",
+        "google",
+        "autocomplete",
+        "address"
+    ],
+    "homepage": "https://github.com/hnooz/nova-google-autocomplete",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "James Hemery",
+            "email": "james@yieldstudio.fr",
+            "homepage": "https://yieldstudio.fr",
+            "role": "Creator"
+        },
+        {
+            "name": "Mohamed Idris",
+            "email": "mohammededris23@gmail.com",
+            "homepage": "https://github.com/hnooz",
+            "role": "Fork maintener"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "laravel/nova": "^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hnooz\\NovaGoogleAutocomplete\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hnooz\\NovaGoogleAutocomplete\\FieldServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "style-fix": "vendor/bin/pint",
+        "style-check": "./vendor/bin/pint --test",
+        "rector-dry": [
+            "./vendor/bin/rector process --dry-run"
+        ],
+        "rector-fix": [
+            "./vendor/bin/rector process"
+        ],
+        "ci-check": [
+            "composer style-check",
+            "composer rector-dry"
+        ]
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "rector/rector": "^1.1",
+        "driftingly/rector-laravel": "^1.2",
+        "laravel/pint": "^1.0"
+    }
+}

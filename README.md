@@ -6,7 +6,7 @@ This field allows you to work with Google Places API to autocomplete on user inp
 
 Fork from [yieldstudio/nova-google-autocomplete-field](https://github.com/yieldstudio/nova-google-autocomplete) to maintain package.
 
-<!-- ## Installation
+## Installation
 
 You can install the package in to a Laravel app that uses Nova via composer:
 
@@ -17,7 +17,7 @@ composer require hnooz/nova-google-autocomplete
 Now publish config and localization files:
 
 ```shell
-php artisan vendor:publish --provider="YieldStudio\NovaGoogleAutocomplete\FieldServiceProvider"
+php artisan vendor:publish --provider="Hnooz\NovaGoogleAutocomplete\FieldServiceProvider"
 ```
 
 Create an app and enable Places API and create credentials to get your API key
@@ -34,7 +34,7 @@ NOVA_GOOGLE_AUTOCOMPLETE_API_KEY=############################
 Add the use declaration to your resource and use the fields:
 
 ```php
-use YieldStudio\NovaGoogleAutocomplete\GoogleAutocomplete;
+use Hnooz\NovaGoogleAutocomplete\GoogleAutocomplete;
 // ....
 
 GoogleAutocomplete::make('Address'),
@@ -163,13 +163,9 @@ If you want this package in your language, just create a json lang file in your 
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
 ### Security
 
-If you've found a bug regarding security please mail [contact@yieldstudio.fr](mailto:contact@yieldstudio.fr) instead of using the issue tracker. -->
+If you've found a bug regarding security please mail [contact@yieldstudio.fr](mailto:contact@yieldstudio.fr) instead of using the issue tracker.
 
 ## Credits
 - [James Hemery](https://github.com/jameshemery) - Original developer
