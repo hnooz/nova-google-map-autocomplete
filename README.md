@@ -11,7 +11,7 @@ Fork from [yieldstudio/nova-google-autocomplete-field](https://github.com/yields
 You can install the package in to a Laravel app that uses Nova via composer:
 
 ```bash
-composer require hnooz/nova-google-autocomplete
+composer require hnooz/nova-google-map-autocomplete
 ```
 
 Now publish config and localization files:
