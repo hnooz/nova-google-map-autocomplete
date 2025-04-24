@@ -7,5 +7,3 @@ composer.lock
 phpunit.xml
 .phpunit.result.cache
 mix-manifest.json
-.php_cs.cache
-.php-cs-fixer.cache
