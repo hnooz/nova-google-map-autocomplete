@@ -1,6 +1,6 @@
 # Nova Google AutoComplete Field Package
 
-[![Latest Version](https://img.shields.io/github/release/hnooz/nova-google-autocomplete?style=flat-square)](https://github.com/hnooz/nova-google-autocomplete/releases)
+[![Latest Version](https://img.shields.io/github/release/hnooz/nova-google-map-autocomplete?style=flat-square)](https://github.com/hnooz/nova-google-map-autocomplete/releases)
 
 This field allows you to work with Google Places API to autocomplete on user input and get the full real address with all the metadata (like latitude and longitude).
 
