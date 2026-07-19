@@ -1,10 +1,10 @@
-import IndexField from './components/GoogleAutocomplete/IndexField';
-import DetailField from './components/GoogleAutocomplete/DetailField';
-import FormField from './components/GoogleAutocomplete/FormField';
+import IndexField from './components/GoogleAutocomplete/IndexField.vue';
+import DetailField from './components/GoogleAutocomplete/DetailField.vue';
+import FormField from './components/GoogleAutocomplete/FormField.vue';
 
-import MetaDataIndexField from './components/AddressMetadata/IndexField';
-import MetaDataDetailField from './components/AddressMetadata/DetailField';
-import MetaDataFormField from './components/AddressMetadata/FormField';
+import MetaDataIndexField from './components/AddressMetadata/IndexField.vue';
+import MetaDataDetailField from './components/AddressMetadata/DetailField.vue';
+import MetaDataFormField from './components/AddressMetadata/FormField.vue';
 
 Nova.booting((app) => {
     app.component('index-google-autocomplete', IndexField);

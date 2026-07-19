@@ -9,6 +9,8 @@ jobs:
     env:
       NOVA_USERNAME: ${{ secrets.NOVA_USERNAME }}
       NOVA_PASSWORD: ${{ secrets.NOVA_PASSWORD }}
+      # Highest Nova release the CI license is entitled to download.
+      NOVA_VERSION: 5.7.2
 
     steps:
       - name: Checkout code
@@ -29,7 +31,7 @@ jobs:
         run: composer config http-basic.nova.laravel.com $NOVA_USERNAME $NOVA_PASSWORD
 
       - name: Install Composer dependencies
-        run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+        run: composer update --with "laravel/nova:$NOVA_VERSION" --no-progress --prefer-dist --optimize-autoloader
 
       - name: Run Laravel Pint
         run: ./vendor/bin/pint
