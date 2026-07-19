@@ -7,3 +7,6 @@ composer.lock
 phpunit.xml
 .phpunit.result.cache
 mix-manifest.json
+CLAUDE.md
+.claude
+.vscode
