@@ -11,6 +11,5 @@ return RectorConfig::configure()
         __DIR__.'/dist',
         __DIR__.'/src',
     ])
-    // uncomment to reach your current PHP version
-    // ->withPhpSets()
+    ->withPhpSets(php83: true)
     ->withTypeCoverageLevel(0);

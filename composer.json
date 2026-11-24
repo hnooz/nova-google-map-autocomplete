@@ -32,7 +32,7 @@
         }
     ],
     "require": {
-        "php": "^8.0",
+        "php": "^8.3",
         "laravel/nova": "^5.0"
     },
     "autoload": {
@@ -62,13 +62,16 @@
         ]
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "8.3"
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require-dev": {
-        "rector/rector": "^1.1",
-        "driftingly/rector-laravel": "^1.2",
-        "laravel/pint": "^1.0"
+        "driftingly/rector-laravel": "^2.0",
+        "laravel/pint": "^1.20",
+        "rector/rector": "^2.0"
     }
 }

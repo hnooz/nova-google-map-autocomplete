@@ -7,6 +7,11 @@ This field allows you to work with Google Places API to autocomplete on user inp
 
 Fork from [yieldstudio/nova-google-autocomplete-field](https://github.com/yieldstudio/nova-google-autocomplete) to maintain package.
 
+## Requirements
+
+- PHP 8.3+
+- Laravel Nova 5
+
 ## Installation
 
 You can install the package in to a Laravel app that uses Nova via composer:
