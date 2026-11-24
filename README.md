@@ -5,16 +5,23 @@
 
 This field allows you to work with Google Places API to autocomplete on user input and get the full real address with all the metadata (like latitude and longitude).
 
-Fork from [yieldstudio/nova-google-autocomplete-field](https://github.com/yieldstudio/nova-google-autocomplete) to maintain package.
+Originally created by Emiliano Tisato and later maintained by Yield Studio as
+[yieldstudio/nova-google-autocomplete](https://github.com/yieldstudio/nova-google-autocomplete),
+which is no longer maintained. This package is its actively maintained continuation.
 
 ## Requirements
 
 - PHP 8.3+
 - Laravel Nova 5
 
+| Package | PHP  | Nova |
+|---------|------|------|
+| 3.x     | 8.3+ | 5.x  |
+| 1.x–2.x | 8.0+ | 5.x  |
+
 ## Installation
 
-You can install the package in to a Laravel app that uses Nova via composer:
+You can install the package into a Laravel app that uses Nova via composer:
 
 ```bash
 composer require hnooz/nova-google-map-autocomplete
@@ -26,8 +33,7 @@ Now publish config and localization files:
 php artisan vendor:publish --provider="Hnooz\NovaGoogleAutocomplete\FieldServiceProvider"
 ```
 
-Create an app and enable Places API and create credentials to get your API key
-[https://console.developers.google.com](https://console.developers.google.com)
+In the [Google Cloud Console](https://console.cloud.google.com/apis/library), enable the **Maps JavaScript API** and **Places API**, then create an API key under Credentials.
 
 Add the below to your `.env` file
 
@@ -53,10 +59,10 @@ GoogleAutocomplete::make('Address')
 
 // Specify multiple countries [array]
 GoogleAutocomplete::make('Address')
-          ->countries(['US','AU']),
+          ->countries(['US','SA']),
 ```
 
-You can access other parameter like `latitude, longitude, street_number, route, locality, administrative_area_level_1, country, postal_code`, along with everything available in the - every field present in the [PlaceResult object](https://developers.google.com/maps/documentation/javascript/reference/#PlaceResult)
+You can access other parameter like `latitude, longitude, street_number, route, locality, administrative_area_level_1, country, postal_code`, along with every field present in the [PlaceResult object](https://developers.google.com/maps/documentation/javascript/reference/places-service#PlaceResult)
 
 ```php
 use Hnooz\NovaGoogleAutocomplete\AddressMetadata;
@@ -130,7 +136,7 @@ Which would return:
 
 **administrative_area_level_1:** Kansas
 
-You can change the type of places that are returned by the autocomplete using the placeType() method.  You can use any of the values listed at [https://developers.google.com/places/supported_types#table3](https://developers.google.com/places/supported_types#table3)
+You can change the type of places that are returned by the autocomplete using the placeType() method.  You can use any of the values listed in [Google's supported place types](https://developers.google.com/maps/documentation/places/web-service/supported_types)
 
 ```php
 use Hnooz\NovaGoogleAutocomplete\AddressMetadata;
@@ -146,12 +152,16 @@ GoogleAutocomplete::make('Address')->placeType('establishment');
 If you want to capture all requested values as a JSON object, you can use the `fromValuesAsJson()` helper instead of using `fromValue()`.
 
 ```php
+use Hnooz\NovaGoogleAutocomplete\AddressMetadata;
+use Hnooz\NovaGoogleAutocomplete\GoogleAutocomplete;
+use Laravel\Nova\Fields\Code;
+
 // Autocomplete field
 GoogleAutocomplete::make('Location')
     ->countries('BE')
     ->withValues(['latitude', 'longitude', 'street_number', 'route', 'locality', 'administrative_area_level_1', 'country', 'postal_code']),
 
-// Field that will capture de response object
+// Field that will capture the response object
 AddressMetadata::make('Address')
     ->fromValuesAsJson()
     ->invisible()
@@ -164,9 +174,25 @@ Code::make('Address')->json()->onlyOnDetail(),
 ## Localization
 If you want this package in your language, just create a json lang file in your `resources/lang/vendor/nova-google-autocomplete` folder.
 
+## Development
+
+```bash
+npm install
+npm run build        # dist/ is shipped with the package and must be committed
+npm run lint
+composer ci-check    # pint + rector (dry run), as enforced by CI
+```
+
+Installing Composer dependencies requires Nova credentials:
+
+```bash
+composer config http-basic.nova.laravel.com <username> <license-key>
+```
+
 ## Credits
-- [James Hemery](https://github.com/jameshemery) - Original developer
-- [Mohamed Idris](https://github.com/hnooz) - Fork maintainer
+- Emiliano Tisato - Original author (2018)
+- [James Hemery](https://github.com/jameshemery) - Yield Studio version
+- [Mohamed Idris](https://github.com/hnooz) - Maintainer
 
 ## License
 

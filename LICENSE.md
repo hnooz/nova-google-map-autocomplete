@@ -1,6 +1,7 @@
 MIT License
 
 Copyright (c) 2022 Yield Studio
+Copyright (c) 2025 Mohamed Idris
 
 Initially created Emiliano Tisato in 2018
 
